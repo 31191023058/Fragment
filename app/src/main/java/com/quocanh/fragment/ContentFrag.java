@@ -18,7 +18,7 @@ public class ContentFrag extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(getActivity(), ViewPhotoActivity.class);
-            intent.putExtra("id", gridView.getAdapter().getItemId(i));
+            intent.putExtra("id", (int) gridView.getAdapter().getItemId(i));
             startActivity(intent);
         }
     };
@@ -30,6 +30,7 @@ public class ContentFrag extends Fragment {
         gridView = view.findViewById(R.id.gridview);
         adapter = new PhotoAdapter(PhotoData.generatedPhotoData(),getContext());
         gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(onItem);
         return view;
     }
 
